@@ -60,6 +60,16 @@ export default function TextForm(props)
     msg.text = text;
     window.speechSynthesis.speak(msg);
   }
+  
+  const handleDownload = () => {
+        const element = document.createElement("a");
+        const file = new Blob([text], {
+          type: "text/plain"
+        });
+        element.href = URL.createObjectURL(file);
+        element.download = "myFile.txt";
+        element.click();
+}
 
   
    
@@ -82,7 +92,7 @@ export default function TextForm(props)
 <button  disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleReplace}>Replace-Text</button>
 <button  disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCapitalizeWordClick}>Capitalize First Letter</button>
 <button disabled ={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleSpeak}>Speak</button>
-<button disabled={text.length===0} className='btn btn-primary mx-2 my-2' >Download Text</button>
+<button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handleDownload}>Download Text</button>
 
 
 </div>
