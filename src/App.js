@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 //import './App.css';
-import About from './Cmponents/About';
+import About from './Components/About';
 import { useState } from 'react';
-import Navbar from './Cmponents/Navbar';
-import TextForm from './Cmponents/TextForm';
-import Alert from './Cmponents/Alert';
+import Navbar from './Components/Navbar';
+import TextForm from './Components/TextForm';
+import Alert from './Components/Alert';
 import {
   BrowserRouter as Router,
   Routes,
