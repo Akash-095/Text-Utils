@@ -36,24 +36,27 @@ export default function TextForm(props)
     }
     const handleExtraSpace  = ()=>{
       let newText = text.split(/[ ]+/);
-      setText(newText.join(" "))
+      setText(newText.join(" "));
+      props.showAlert("Extra Spaces are removed","success");
     }
     const handleReplace = ()=>{
-      let repval=prompt("Enter the new text:")
+      let repval=prompt("Enter the text that you want to replace with:")
       let tobereplaced = new RegExp(repval,'g');
-      let toreplace=prompt("Enter the text that you want to replace with:")
+      let toreplace=prompt("Enter the new text:")
       let newText= text.replace(tobereplaced,toreplace);
          setText(newText);
+         props.showAlert(`${tobereplaced} is replaced with ${toreplace} `,"success");
 
     }
     const handleCapitalizeWordClick = () => {
     let lowercase = text.toLowerCase();
-    let words = lowercase.split(" ");
+    let words = lowercase.split(". ");
     let newWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1);
     });
-    let newText = newWords.join(" ");
+    let newText = newWords.join(". ");
     setText(newText);
+    props.showAlert("First letters are capatalized.","success")
   }
 
   const handleSpeak = () => {
@@ -70,6 +73,7 @@ export default function TextForm(props)
         element.href = URL.createObjectURL(file);
         element.download = "myFile.txt";
         element.click();
+        props.showAlert("File Downloaded.","success")
 }
 
   
